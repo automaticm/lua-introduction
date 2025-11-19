@@ -1,0 +1,119 @@
+Sure — here’s a deeper breakdown of Project 15: Building a Mini Lisp Interpreter in Lua, including the core concepts, architecture, step-by-step milestones, and a small working example.
+
+This is one of the best semi-difficult projects for leveling up your Lua skills, because it uses:
+✔ parsing
+✔ recursion
+✔ data structures
+✔ higher-order functions
+✔ evaluating code as data
+
+🧠 What You're Building
+
+A basic interpreter for a tiny Lisp dialect that supports:
+
+Numbers
+
+Lists
+
+Variables
+
+Function calls
+
+Definitions
+
+Basic arithmetic
+
+A small example of code that your interpreter might run:
+
+(+ 1 (* 2 3))        ; returns 7  
+(define x 10)  
+(+ x 5)              ; returns 15  
+
+🧩 Key Components of the Interpreter
+1. Tokenizer (Lexer)
+
+Takes a string like:
+
+(+ 1 (* 2 3))
+
+
+And splits it into a list of tokens:
+
+{ "(", "+", "1", "(", "*", "2", "3", ")", ")" }
+
+
+This is a straightforward step using Lua patterns.
+
+2. Parser (S-expression parser)
+
+Converts token lists into nested Lua tables.
+
+Example:
+
+Tokens:
+
+( + 1 ( * 2 3 ) )
+
+
+Parsed AST:
+
+{ "+", 1, { "*", 2, 3 } }
+
+
+This is a recursive descent parser, and it teaches you core parsing ideas.
+
+3. Environment (Variable/Function Scope)
+
+Stores variables and built-in functions.
+
+Example environment table:
+
+{
+  ["+"] = function(a, b) return a + b end,
+  ["*"] = function(a, b) return a * b end,
+  x = 10
+}
+
+
+You can attach environment chaining too (lexical scoping).
+
+4. Evaluator
+
+This is the heart of the interpreter.
+
+It takes parsed expressions and:
+
+If it's a number → return it
+
+If it's a variable → look it up
+
+If it's a list → treat first item as a function
+
+Example:
+
+{ "+", 1, { "*", 2, 3 } }
+
+
+Evaluation happens like this:
+
+Evaluate 1 → 1
+
+Evaluate { "*", 2, 3 } → 6
+
+Call + with (1, 6) → 7
+
+5. Adding Language Features
+
+After the basics work, you can add:
+
+define → create variables
+
+lambda → create functions
+
+if → conditional branching
+
+let → scoped variables
+
+quote → treat code as literal data
+
+This is where the interpreter becomes properly powerful.
