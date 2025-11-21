@@ -1,6 +1,3 @@
-require("CustomGlobal")
-
-
 local function intToChar(x)
     local charN = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'}
     return charN[x]
@@ -36,3 +33,4 @@ for n=1, 64 do
     end
 end
 print("\n"..str.."\n")
+
