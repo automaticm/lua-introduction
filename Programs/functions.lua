@@ -16,10 +16,13 @@ function printBoard()
                 local sym = value.player
                 if value.player == "black" then
                     sym = sym .. "Black"
+                    row = row .. "[" .. string.lower(value.piece) .. "]"
+                else
+                    sym = sym .. "White"
+                    row = row .. "[" .. value.piece .. "]"
                 end
-                row = row .. "[" .. value.piece .. "]"
             else
-                row = row .. "[]"
+                row = row .. "[ ]"
             end
     end
         print(row)
