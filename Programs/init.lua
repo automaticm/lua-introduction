@@ -19,8 +19,8 @@ piece =
 
 plr =
 {
-    white = "White",
-    black = "Black"
+    white = "white",
+    black = "black"
 }
 
 files = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}
