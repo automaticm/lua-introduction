@@ -40,11 +40,6 @@ setmetatable(board,
 }
 )
 
--- printBoard()
--- Make function later
--- Setup the board (pawns only right now)
--- In chess, the black pieces should be on top, I (Edgar) switched these around bc black was in the bottom
-
 for i, file in ipairs(files) do
     -- PlacePiece(file.."2", piece.pawn, plr.black)
     PlacePiece(file.."2", piece.pawn, plr.white)
@@ -101,23 +96,22 @@ while(true) do
     -- White's turn
     print("White's turn:")
     print("Enter the piece you want to move (chess notation):")
-    local whitePiece = string.lower(io.read())
+    local whitePiece = io.read()
     
     print("Enter destination square (chess notation):")
-    local whiteMove = string.lower(io.read())
+    local whiteMove = io.read()
     
     if whitePiece == "p" or whitePiece == "P" then
         local file = whiteMove:sub(1, 1)  -- Get the file (a-h)
         local pawnSquare = FindPieceOnFile(file, plr.white)
-        
         if pawnSquare then
             MovePiece(pawnSquare, whiteMove)
         else
             print("No white pawn found on file " .. file)
         end
     else
-        -- For now, just place the pieces.
-        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua. 
+        -- For now, just places the pawn.
+        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua.
         -- Thanks - Ado
     end
 
@@ -127,10 +121,10 @@ while(true) do
     -- Black's turn
     print("\nBlack's turn:")
     print("Enter the piece you want to move (chess notation):")
-    local blackPiece = string.lower(io.read())
+    local blackPiece = io.read()
     
     print("Enter destination square (chess notation):")
-    local blackMove = string.lower(io.read())
+    local blackMove = io.read()
     
     if blackPiece == "p" or blackPiece == "P" then
         local file = blackMove:sub(1, 1)
@@ -142,7 +136,7 @@ while(true) do
             print("No black pawn found on file " .. file)
         end
     else
-        -- For now, just place the pieces.
+        -- For now, just place the pawn.
         -- Whenever someone gets the chance, can you implement the methods you made in movement.lua. 
         -- Thanks - Ado
     end

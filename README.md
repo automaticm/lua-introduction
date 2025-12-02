@@ -19,6 +19,13 @@
 		 > knight, only one bishop
 	Add this this link on the website that we are making: https://gist.github.com/oatmealine/655c9e64599d0f0dd47687c1186de99f
 	Game logic
+		> Pawns should not be able to take horizontally, only diagonally.
+		> Pawns should not be able to move 2 squares after the first move
+			> This includes not moving over a pawn.
+		> En-passant
+		> Check, checkmate, and draw positions
+			> Draw is not possible in the first 9 moves of chess. At the 10th move, check for draws.
+				> Maybe add a variable outside the loop to check the amount of times a player has moved? Iterate in the loop
 
 # lua-introduction
 

@@ -98,12 +98,14 @@ end
 
 --[[
     Author: Ado
-    returns the square where the piece is found or nil if no pawn exists
+    returns the square where the piece is found or nil if no piece exists'
+    (words with piece.pawn, generic doesnt)
+    changed to pawn for now - this is difficult logic to implement
 --]]
 function FindPieceOnFile(file, player)
     for i = 1, 8 do
         local square = file .. tostring(i)
-        if board[square].piece == piece.piece and board[square].player == player then
+        if board[square].piece == piece.pawn and board[square].player == player then
             return square
         end
     end
