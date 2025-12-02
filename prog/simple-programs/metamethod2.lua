@@ -7,9 +7,15 @@ setmetatable(groot, {
         local len = #args
 
         if len == 0 then
-            return "No one is groot"
+            return "No one is groot."
         elseif len == 1 then
-            return "I am groot"
+            return "I am groot!"
+        elseif len == 2 then
+            return "We are groot!"
+        else
+            return "Who is groot?"
         end
     end
 })
+
+print(groot())
