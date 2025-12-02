@@ -18,4 +18,15 @@ setmetatable(groot, {
     end
 })
 
+-- doesnt matter what u use as a parameter
 print(groot())
+print(groot(1))
+print(groot(1, 2))
+
+print("")
+
+print(groot[1])
+groot[1] = groot()
+print(groot[1])
+groot[2] = groot(groot(1))
+print(groot[2])
