@@ -1,3 +1,4 @@
+-- Linking files
 local functions = require("functions")
 local init = require("init")
 
@@ -16,18 +17,22 @@ __index is called when trying to read a key that doesn't exist in board
 only allow assignment if _board isnt board
 ]]
 
--- Create a proxy interface. board becomes a "reference" to _board
+-- Create a proxy table. board becomes a "reference" to _board (that has actual data)
 -- This allows board.e4 and board["e4"] to work while providing validation
 setmetatable(board, 
 {
     __index = function(_, key)
-        return _board[key]
+        if _board[key] then
+            return _board[key]
+        else
+            print("Invalid square")
+        end
     end,
     __newindex = function(_, key, value)
         if _board[key] then
             _board[key] = value
-        -- else
-        --     print("Error")
+        else
+            print("Error: Invalid chess square '" .. key .. "'")
         end
     end
 }
@@ -37,12 +42,20 @@ setmetatable(board,
 -- Make function later
 -- Setup the board (pawns only right now)
 for i, file in ipairs(files) do
-    placePiece(file.."2", piece.pawn, plr.black)
+    PlacePiece(file.."2", piece.pawn, plr.black)
 end
 
 for i, file in ipairs(files) do
-    placePiece(file.."7", piece.pawn, plr.white)
+    PlacePiece(file.."7", piece.pawn, plr.white)
 end
 
-print(" ")
-printBoard()
+
+-- show examples of when one metamethod is triggered
+-- board.z4 = {piece = piece.pawn, player = plr.white} -- __newindex
+-- board.z4.player = plr.white -- __index
+-- board.z4.piece = piece.pawn
+
+board["a1"]
+
+-- print(" ")
+PrintBoard()

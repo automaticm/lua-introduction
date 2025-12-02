@@ -1,11 +1,11 @@
 local init = require("init")
 
-function placePiece(square, piece, plr)
+function PlacePiece(square, piece, plr)
     board[square].piece = piece
     board[square].player = plr
 end
 
-function printBoard()
+function PrintBoard()
     for i = #ranks, 1, -1 do
         local row = ""
         local rank = ranks[i]
