@@ -111,6 +111,8 @@ while(true) do
         end
     else
         -- For now, just places the pawn.
+        -- FindPieceOnFile should place all pieces, but I made it for pawns only.
+        -- Can't get other to work, but using (white's file on line 105) which I believe is the cause (after adding piece in FindPieceOnFile)
         -- Whenever someone gets the chance, can you implement the methods you made in movement.lua.
         -- Thanks - Ado
     end
@@ -136,8 +138,10 @@ while(true) do
             print("No black pawn found on file " .. file)
         end
     else
-        -- For now, just place the pawn.
-        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua. 
+        -- For now, just places the pawn.
+        -- FindPieceOnFile should place all pieces, but I made it for pawns only.
+        -- Can't get other to work, but using (white's file on line 105) which I believe is the cause (after adding piece in FindPieceOnFile)
+        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua.
         -- Thanks - Ado
     end
 
