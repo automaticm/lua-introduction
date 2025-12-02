@@ -86,28 +86,37 @@ end
 
 --[[
     Creator: David
+    recursive function for the checkIfInCheck function
+--]]
+local function checkIfInCheckRecursive (kingSquare, rank, file)
+    -- When a piece is unfriendly check if they have the King in check
+    if checkFriendly(board[rank..file]) == false then
+        if checkMovementAll(rank..file, kingSquare) == true then
+            return true
+        end
+    end
+
+    if (rank..file) == "h8" then
+        return false
+    end
+    
+    rank = NextRank(rank)
+    if rank == 'a' then
+        file = file + 1
+    end
+    return checkIfInCheckRecursive(kingSquare, rank, file)
+end
+
+--[[
+    Creator: David
     THis function will check if the King is in check
     returns a boolean "true" when in check and "false" when not in check
 --]]
-function checkIfInCheck (endSquare)
+function checkIfInCheck (kingSquare)
     -- Check every square on the board to see if a piece can see the King
     local rank = 'a'
     local file = 1
-    while (rank..file) ~= "h8" do
-        -- When a piece is unfriendly check if they have the King in check
-        if checkFriendly(board[rank..file]) == false then
-            if checkMovementAll(rank..file, endSquare) == true then
-                return true
-            end
-        end
-
-        local checkBounds = tonumber(rank)
-        rank = NextRank(rank)
-        if rank == 'a' then
-            file = file + 1
-        end
-    end
-    return false
+    return checkIfInCheckRecursive(kingSquare, rank, file)
 end
 
 --[[
