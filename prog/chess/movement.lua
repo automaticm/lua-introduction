@@ -162,7 +162,15 @@ function checkMovementRook (starSquare, endSquare)
 end
 function checkMovementKnight (starSquare, endSquare)
 end
-function checkMovementPawn (starSquare, endSquare)
+
+function checkMovementPawn (file, player) --(starSquare, endSquare)
+    for i = 1, 8 do
+        local square = file .. tostring(i)
+        if board[square].piece == piece.pawn and board[square].player == player then
+            return square
+        end
+    end
+    return nil
 end
 
 --[[

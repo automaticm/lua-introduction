@@ -1,7 +1,7 @@
 -- Linking files
 local functions = require("functions")
 local init = require("init")
---local movement = require("movement")
+local movement = require("movement")
 
 
 for _, rank in ipairs(ranks) do
@@ -103,7 +103,7 @@ while(true) do
     
     if whitePiece == "p" or whitePiece == "P" then
         local file = whiteMove:sub(1, 1)  -- Get the file (a-h)
-        local pawnSquare = FindPieceOnFile(file, plr.white)
+        local pawnSquare = checkMovementPawn(file, plr.white)
         if pawnSquare then
             MovePiece(pawnSquare, whiteMove)
         else
@@ -130,7 +130,7 @@ while(true) do
     
     if blackPiece == "p" or blackPiece == "P" then
         local file = blackMove:sub(1, 1)
-        local pawnSquare = FindPieceOnFile(file, plr.black)
+        local pawnSquare = checkMovementPawn(file, plr.black)
         
         if pawnSquare then
             MovePiece(pawnSquare, blackMove)
