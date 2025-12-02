@@ -85,6 +85,32 @@ function checkFriendly (endSquare)
 end
 
 --[[
+    Creator: David
+    THis function will check if the King is in check
+    returns a boolean "true" when in check and "false" when not in check
+--]]
+function checkIfInCheck (endSquare)
+    -- Check every square on the board to see if a piece can see the King
+    local rank = 'a'
+    local file = 1
+    while (rank..file) ~= "h8" do
+        -- When a piece is unfriendly check if they have the King in check
+        if checkFriendly(board[rank..file]) == false then
+            if checkMovementAll(rank..file, endSquare) == true then
+                return true
+            end
+        end
+
+        local checkBounds = tonumber(rank)
+        rank = NextRank(rank)
+        if rank == 'a' then
+            file = file + 1
+        end
+    end
+    return false
+end
+
+--[[
     Creator: Edgar
     These functions simple return true or false if the selected piece can move in the way the user want it to move
 --]]
@@ -99,6 +125,27 @@ end
 function checkMovementKnight (starSquare, endSquare)
 end
 function checkMovementPawn (starSquare, endSquare)
+end
+
+--[[
+    Creator: David
+    checkAll takes the starSquare and parses what piece it is
+    returns the same as previous checkMovement functions
+--]]
+function checkMovementAll(starSquare, endSquare)
+    if board[starSquare] == piece.king then
+        return checkMovementKing(starSquare, endSquare)
+    elseif board[starSquare] == piece.queen then
+        return checkMovementQueen(starSquare, endSquare)
+    elseif board[starSquare] == piece.rook then
+        return checkMovementRook(starSquare, endSquare)
+    elseif board[starSquare] == piece.knight then
+        return checkMovementKnight(starSquare, endSquare)
+    elseif board[starSquare] == piece.bishop then
+        return checkMovementBishop(starSquare, endSquare)
+    elseif board[starSquare] == piece.pawn then
+        return checkMovementPawn(starSquare, endSquare)
+    end
 end
 
 
