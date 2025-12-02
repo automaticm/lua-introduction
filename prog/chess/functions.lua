@@ -66,12 +66,12 @@ end
 
 --[[
     Author: Ado
-    returns the square where the pawn is found or nil if no pawn exists
+    returns the square where the piece is found or nil if no pawn exists
 --]]
-function FindPawnOnFile(file, player)
+function FindPieceOnFile(file, player)
     for i = 1, 8 do
         local square = file .. tostring(i)
-        if board[square].piece == piece.pawn and board[square].player == player then
+        if board[square].piece == piece.piece and board[square].player == player then
             return square
         end
     end

@@ -101,14 +101,14 @@ while(true) do
     -- White's turn
     print("White's turn:")
     print("Enter the piece you want to move (chess notation):")
-    local whitePiece = io.read()
+    local whitePiece = string.lower(io.read())
     
     print("Enter destination square (chess notation):")
-    local whiteMove = io.read()
+    local whiteMove = string.lower(io.read())
     
     if whitePiece == "p" or whitePiece == "P" then
         local file = whiteMove:sub(1, 1)  -- Get the file (a-h)
-        local pawnSquare = FindPawnOnFile(file, plr.white)
+        local pawnSquare = FindPieceOnFile(file, plr.white)
         
         if pawnSquare then
             MovePiece(pawnSquare, whiteMove)
@@ -123,18 +123,18 @@ while(true) do
 
     -- Show board after moving piece
     PrintBoard()
-    
+
     -- Black's turn
     print("\nBlack's turn:")
     print("Enter the piece you want to move (chess notation):")
-    local blackPiece = io.read()
+    local blackPiece = string.lower(io.read())
     
     print("Enter destination square (chess notation):")
-    local blackMove = io.read()
+    local blackMove = string.lower(io.read())
     
     if blackPiece == "p" or blackPiece == "P" then
         local file = blackMove:sub(1, 1)
-        local pawnSquare = FindPawnOnFile(file, plr.black)
+        local pawnSquare = FindPieceOnFile(file, plr.black)
         
         if pawnSquare then
             MovePiece(pawnSquare, blackMove)
