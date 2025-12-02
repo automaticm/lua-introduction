@@ -33,3 +33,6 @@ groot[3] = groot(groot(1), groot(2))
 print(groot[3])
 groot[4] = groot(groot(1), groot(2), "banana")
 print(groot[4])
+
+print(getmetatable(groot))
+print(getmetatable(groot[1]))

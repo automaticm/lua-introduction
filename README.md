@@ -10,7 +10,12 @@
 ### To-Do
 	Capturing pieces (goes hand and hhand with user input)
 	Point system from capturing pieces (points defined in init.lua)
-	Add this this link on the website that we are making: https://gist.github.com/oatmealine/655c9e64599d0f0dd47687c1186de99f
+	Add this information from these links on the website that we are making:
+		> https://gist.github.com/oatmealine/655c9e64599d0f0dd47687c1186de99f
+		> https://www.lua.org/manual/5.4/manual.html#2.4
+		> https://www.lua.org/pil/16.html
+		> https://www.lua.org/pil/16.1.html
+		> 
 	Game logic
 		> Pawns should not be able to take horizontally, only diagonally.
 		> Pawns should not be able to move 2 squares after the first move
