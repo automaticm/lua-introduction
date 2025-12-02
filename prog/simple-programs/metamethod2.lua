@@ -1,0 +1,1 @@
+-- example make a table callable using __call metamethod
