@@ -69,11 +69,9 @@ end
     This functino makes sure that there is a valid peice in the start square, 
     the first square that will be asked by the user. Only returns true on valid squares.
 --]]
-function validStart(startSqr)
-
+function checkFriendly (p1, p2)
+    return board[p1].player ~= board[p2].player
 end
-
-
 
 --[[
     Creator: Edgar
@@ -90,9 +88,11 @@ end
 --]]
 local function checkIfInCheckRecursive (kingSquare, rank, file)
     -- When a piece is unfriendly check if they have the King in check
-    if checkFriendly(board[rank..file]) == false then
-        if checkMovementAll(rank..file, kingSquare) == true then
-            return true
+    if board[rank..file].player ~= nil then
+        if checkFriendly(rank..file, kingSquare) == true then
+            if checkMovementAll(rank..file, kingSquare) == true then
+                return true
+            end
         end
     end
 
@@ -117,6 +117,44 @@ function checkIfInCheck (kingSquare)
     local rank = 'a'
     local file = 1
     return checkIfInCheckRecursive(kingSquare, rank, file)
+end
+
+--[[
+    Creator: David
+    This function checks if the King is in checkmate
+    false if not in checkmate, true if king is mated
+
+    Does not check if a different piece could get the king out of check
+        but only if the king can move
+--]]
+function checkCheckmate(kingsquare)
+    -- Start by checking current square
+    if checkIfInCheck(kingsquare) == false then
+        return false
+    end
+    local rank, file = parseCoord(kingsquare)
+
+    -- check all possible spaces the king can move
+    -- if king can move return false, king is not in checkmate
+    if checkMovementKing(kingsquare, toChar(rank+1)..(file+1)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank+1)..(file)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank)..(file+1)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank-1)..(file-1)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank-1)..file) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank)..(file-1)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank+1)..(file-1)) then
+        return false
+    elseif checkMovementKing(kingsquare, toChar(rank-1)..(file+1)) then
+        return false
+    end
+    -- king cannot move and is in check, return true
+    return true
 end
 
 --[[
