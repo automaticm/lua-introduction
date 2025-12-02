@@ -41,13 +41,45 @@ setmetatable(board,
 -- printBoard()
 -- Make function later
 -- Setup the board (pawns only right now)
+-- In chess, the black pieces should be on top, I (Edgar) switched these around bc black was in the bottom
+
 for i, file in ipairs(files) do
-    PlacePiece(file.."2", piece.pawn, plr.black)
+    -- PlacePiece(file.."2", piece.pawn, plr.black)
+    PlacePiece(file.."2", piece.pawn, plr.white)
 end
 
 for i, file in ipairs(files) do
-    PlacePiece(file.."7", piece.pawn, plr.white)
+    -- PlacePiece(file.."7", piece.pawn, plr.white)
+    PlacePiece(file.."7", piece.pawn, plr.black)
 end
+
+--setting up white pieces
+PlacePiece("a1", piece.rook, plr.white)
+PlacePiece("h1", piece.rook, plr.white)
+
+PlacePiece("b1", piece.knight, plr.white)
+PlacePiece("g1", piece.knight, plr.white)
+
+PlacePiece("c1", piece.bishop, plr.white)
+PlacePiece("f1", piece.bishop, plr.white)
+
+PlacePiece("d1", piece.queen, plr.white)
+PlacePiece("e1", piece.king, plr.white)
+
+--setting up black pieces
+PlacePiece("a8", piece.rook, plr.black)
+PlacePiece("h8", piece.rook, plr.black)
+
+PlacePiece("b8", piece.knight, plr.black)
+PlacePiece("g8", piece.knight, plr.black)
+
+PlacePiece("c8", piece.bishop, plr.black)
+PlacePiece("f8", piece.bishop, plr.black)
+
+PlacePiece("d8", piece.queen, plr.black)
+PlacePiece("e8", piece.king, plr.black)
+
+
 
 
 -- show examples of when one metamethod is triggered

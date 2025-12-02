@@ -15,7 +15,7 @@ valPieces =
     knight = 3,   
 }
 
-piece = 
+piece =  
 {
     king = "K",
     queen = "Q",
