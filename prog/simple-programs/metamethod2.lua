@@ -1,7 +1,9 @@
 --[[
     Author: Ado
     Example of object oriented-like programming by
-    making a table callable using __call metamethod 
+    making a table callable using __call metamethod
+
+    
 ]]
 local groot = {}
 
@@ -22,15 +24,12 @@ setmetatable(groot, {
     end
 })
 
--- doesnt matter what u use as a parameter
-print(groot())
-print(groot(1))
-print(groot(1, 2))
-
-print("")
-
 print(groot[1])
 groot[1] = groot()
 print(groot[1])
 groot[2] = groot(groot(1))
 print(groot[2])
+groot[3] = groot(groot(1), groot(2))
+print(groot[3])
+groot[4] = groot(groot(1), groot(2), "banana")
+print(groot[4])
