@@ -28,3 +28,27 @@ function PrintBoard()
         print(row)
     end
 end
+
+--[[
+    Creator: David
+    Takes current rank and returns the character representing the rank to the right (white perspective)
+--]]
+function NextRank(curr)
+    if curr == 'a' then
+        return 'b'
+    elseif curr =='b' then
+        return 'c'
+    elseif curr == 'c' then
+        return 'd'
+    elseif curr == 'd' then
+        return 'e'
+    elseif curr == 'e' then
+        return 'f'
+    elseif curr == 'f' then
+        return 'g'
+    elseif curr == 'g' then
+        return 'h'
+    else 
+        return 'a'
+    end
+end
