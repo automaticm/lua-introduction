@@ -65,21 +65,12 @@ end
 
 
 --[[
-    Creator: Edgar
-    This functino makes sure that there is a valid peice in the start square, 
-    the first square that will be asked by the user. Only returns true on valid squares.
---]]
-function checkFriendly (p1, p2)
-    return board[p1].player ~= board[p2].player
-end
-
---[[
-    Creator: Edgar
+    Creator: Edgar, David
     This function will only return false when a friendly piece is at the square
     the user wants to move to. 
 --]]
-function checkFriendly (endSquare)
-    
+function checkFriendly (p1, p2)
+    return board[p1].player ~= board[p2].player
 end
 
 --[[
