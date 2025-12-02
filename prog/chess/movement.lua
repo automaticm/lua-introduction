@@ -70,24 +70,7 @@ end
     the first square that will be asked by the user. Only returns true on valid squares.
 --]]
 function validStart(startSqr)
-    -- if not startSqr or not startSqr.piece then
-    --     print("Error: there isnt a piece at the square")
-    --     return false
-    -- end
-    -- return inBoard(startSqr)
-        -- Must be a valid chess coordinate
-    if not inBoard(square) then
-        return false
-    end
 
-    local cell = board[square]  -- This uses your metatable to fetch the square table
-
-    if not cell or not cell.piece then
-        print("Error: no piece at " .. square)
-        return false
-    end
-
-    return true
 end
 
 
