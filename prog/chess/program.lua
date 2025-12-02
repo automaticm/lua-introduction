@@ -55,7 +55,5 @@ end
 -- board.z4.player = plr.white -- __index
 -- board.z4.piece = piece.pawn
 
-board["a1"]
-
 -- print(" ")
 PrintBoard()
