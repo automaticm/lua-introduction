@@ -31,6 +31,7 @@ function inBoard(square)
     print("x = " ..x.. " and y is " ..y) 
     return true
 end
+--inBoard("a1")
 
 --[[
     Creator: Edgar
@@ -63,51 +64,65 @@ end
 --parseCoord("h1")
 
 
-function moveValidate(startSquare, endSquare) 
-    local startSqr = board[startSquare]
-    local endSqr = board[endSquare]
-
-    if not startSqr or not startSqr.piece then
-        print("Error: there isnt a piece at the square")
-        return false
-    end
-
-    if endSqr.peice then
-        print("")
-    end
-
-end
-
-
 --[[
     Creator: Edgar
     This functino makes sure that there is a valid peice in the start square, 
     the first square that will be asked by the user. Only returns true on valid squares.
 --]]
 function validStart(startSqr)
-    if not startSqr or not startSqr.piece then
-        print("Error: there isnt a piece at the square")
+    -- if not startSqr or not startSqr.piece then
+    --     print("Error: there isnt a piece at the square")
+    --     return false
+    -- end
+    -- return inBoard(startSqr)
+        -- Must be a valid chess coordinate
+    if not inBoard(square) then
         return false
     end
+
+    local cell = board[square]  -- This uses your metatable to fetch the square table
+
+    if not cell or not cell.piece then
+        print("Error: no piece at " .. square)
+        return false
+    end
+
     return true
 end
+
+
 
 --[[
     Creator: Edgar
     This function will only return false when a friendly piece is at the square
     the user wants to move to. 
 --]]
-function validEnd (endSquare)
+function checkFriendly (endSquare)
     
+end
+
+--[[
+    Creator: Edgar
+    These functions simple return true or false if the selected piece can move in the way the user want it to move
+--]]
+function checkMovementKing (starSquare, endSquare)
+end
+function checkMovementQueen (starSquare, endSquare)
+end
+function checkMovementBishop (starSquare, endSquare)
+end
+function checkMovementRook (starSquare, endSquare)
+end
+function checkMovementKnight (starSquare, endSquare)
+end
+function checkMovementPawn (starSquare, endSquare)
 end
 
 
 --[[
     Creator: Edgar
-    This function will find the type of piece. Each pieces move differently, so this finds out what type the piece is,
-    and determines if the piece can actually move to the destination
+    This function will piece everything together and make the movement happen. 
 --]]
-function findType (startSquare)
+function movement()
 
-    
 end

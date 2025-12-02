@@ -1,7 +1,7 @@
 -- Linking files
 local functions = require("functions")
 local init = require("init")
-local movement = require("movement")
+--local movement = require("movement")
 
 
 for _, rank in ipairs(ranks) do
