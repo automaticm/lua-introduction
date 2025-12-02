@@ -55,7 +55,7 @@ for i, file in ipairs(files) do
     PlacePiece(file.."7", piece.pawn, plr.black)
 end
 
---setting up white pieces
+-- Setting up white pieces
 PlacePiece("a1", piece.rook, plr.white)
 PlacePiece("h1", piece.rook, plr.white)
 
@@ -68,7 +68,7 @@ PlacePiece("f1", piece.bishop, plr.white)
 PlacePiece("d1", piece.queen, plr.white)
 PlacePiece("e1", piece.king, plr.white)
 
---setting up black pieces
+-- Setting up black pieces
 PlacePiece("a8", piece.rook, plr.black)
 PlacePiece("h8", piece.rook, plr.black)
 
@@ -81,13 +81,71 @@ PlacePiece("f8", piece.bishop, plr.black)
 PlacePiece("d8", piece.queen, plr.black)
 PlacePiece("e8", piece.king, plr.black)
 
+-- print(board.h1.player)
+-- print(_board.h1.player)
 
 
-
--- show examples of when one metamethod is triggered
 -- board.z4 = {piece = piece.pawn, player = plr.white} -- __newindex
 -- board.z4.player = plr.white -- __index
 -- board.z4.piece = piece.pawn
 
 -- print(" ")
 PrintBoard()
+
+
+--[[
+    Author: all of us
+    game logic
+]]
+while(true) do
+    -- White's turn
+    print("White's turn:")
+    print("Enter the piece you want to move (chess notation):")
+    local whitePiece = io.read()
+    
+    print("Enter destination square (chess notation):")
+    local whiteMove = io.read()
+    
+    if whitePiece == "p" or whitePiece == "P" then
+        local file = whiteMove:sub(1, 1)  -- Get the file (a-h)
+        local pawnSquare = FindPawnOnFile(file, plr.white)
+        
+        if pawnSquare then
+            MovePiece(pawnSquare, whiteMove)
+        else
+            print("No white pawn found on file " .. file)
+        end
+    else
+        -- For now, just place the pieces.
+        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua. 
+        -- Thanks - Ado
+    end
+
+    -- Show board after moving piece
+    PrintBoard()
+    
+    -- Black's turn
+    print("\nBlack's turn:")
+    print("Enter the piece you want to move (chess notation):")
+    local blackPiece = io.read()
+    
+    print("Enter destination square (chess notation):")
+    local blackMove = io.read()
+    
+    if blackPiece == "p" or blackPiece == "P" then
+        local file = blackMove:sub(1, 1)
+        local pawnSquare = FindPawnOnFile(file, plr.black)
+        
+        if pawnSquare then
+            MovePiece(pawnSquare, blackMove)
+        else
+            print("No black pawn found on file " .. file)
+        end
+    else
+        -- For now, just place the pieces.
+        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua. 
+        -- Thanks - Ado
+    end
+
+    PrintBoard()
+end

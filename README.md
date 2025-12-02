@@ -16,7 +16,7 @@
 	 > Draw
 		 > Should automatically be a draw if no pieces, only one
 		 > knight, only one bishop
-	
+	Add this this link on the website that we are making: https://gist.github.com/oatmealine/655c9e64599d0f0dd47687c1186de99f
 
 # lua-introduction
 

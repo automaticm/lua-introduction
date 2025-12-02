@@ -63,3 +63,40 @@ function NextRank(curr)
         return 'a'
     end
 end
+
+--[[
+    Author: Ado
+    returns the square where the pawn is found or nil if no pawn exists
+--]]
+function FindPawnOnFile(file, player)
+    for i = 1, 8 do
+        local square = file .. tostring(i)
+        if board[square].piece == piece.pawn and board[square].player == player then
+            return square
+        end
+    end
+    return nil
+end
+
+--[[
+    Author: Ado
+    Moves a piece from one square to another
+--]]
+function MovePiece(fromSquare, toSquare)
+    if board[fromSquare].piece then
+        local movingPiece = board[fromSquare].piece
+        local movingPlayer = board[fromSquare].player
+        -- Clears the original square
+        board[fromSquare].piece = nil
+        board[fromSquare].player = nil
+        
+        -- Place piece on new square
+        PlacePiece(toSquare, movingPiece, movingPlayer)
+        return true
+    else
+        -- Don't add the logic to return to player's turn
+        -- if move / piece doesnt exist.
+        -- Thanks - Ado
+        return false
+    end
+end
