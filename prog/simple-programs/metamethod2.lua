@@ -1,4 +1,8 @@
--- example make a table callable using __call metamethod
+--[[
+    Author: Ado
+    Example of object oriented-like programming by
+    making a table callable using __call metamethod 
+]]
 local groot = {}
 
 setmetatable(groot, {

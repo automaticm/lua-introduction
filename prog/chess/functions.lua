@@ -1,10 +1,21 @@
 local init = require("init")
 
+--[[
+    author: Ado
+    Setter method for placing a piece.
+    Out of bounds dealt with metamethod __index and __newindex in "program.lua"
+]]
 function PlacePiece(square, piece, plr)
     board[square].piece = piece
     board[square].player = plr
 end
 
+--[[
+    author: Ado
+    Prints the chess board. 
+    Lower case chess notation if the player is black.
+    Upper case chess notation if the player is white.
+]]
 function PrintBoard()
     for i = #ranks, 1, -1 do
         local row = ""

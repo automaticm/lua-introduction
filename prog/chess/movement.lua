@@ -2,7 +2,6 @@
 local functions = require("functions")
 local init = require("init")
 
-
 --[[
     Creator: Edgar
     This function is used to see if the square passed in is a location inside 
@@ -16,6 +15,7 @@ function inBoard(square)
         return false
     end
 
+    -- Prototype based function of square
     local file = square:sub(1,1)
     local rank = square:sub(2,2)
 
