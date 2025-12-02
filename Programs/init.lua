@@ -1,3 +1,11 @@
+-- board will be an empty proxy table that redirects to _board
+-- _board is the actual storage table that holds all square data
+board = {}
+_board = {}
+
+files = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}
+ranks = {'1', '2', '3', '4', '5', '6', '7', '8'}
+
 valPieces =
 {
     king = -1,
@@ -23,8 +31,5 @@ plr =
     black = "black"
 }
 
-files = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}
-ranks = {'1', '2', '3', '4', '5', '6', '7', '8'}
 
-board = {}
-_board = {}
+
