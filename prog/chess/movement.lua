@@ -242,14 +242,39 @@ function checkMovementKnight (startSquare, endSquare)
 
 end
 
-function checkMovementPawn (file, player) --(startSquare, endSquare)
-    for i = 1, 8 do
-        local square = file .. tostring(i)
-        if board[square].piece == piece.pawn and board[square].player == player then
-            return square
+function checkMovementPawn(starSquare, endSquare)
+    if not inBoard(endSquare) then
+        return false
+    end
+
+    local s1, s2 = parseCoord(startSquare)
+    local e1, e2 = parseCoord(endSquare)
+
+    local diffX = math.abs(s1 - e1)
+    local diffY = math.abs(s2 - e2)
+    
+    -- check if the piece can capture
+    if diffX ~= 0 then
+        if checkFriendly(startSquare, endSquare) == true and diffX == 1 and diffY == 1 then
+            return true
+        else
+            return false
         end
     end
-    return nil
+
+    -- check if pawn can move 2
+    if diffY == 2 then
+        if s2 == 2 then
+            return true
+        end
+    end
+    
+    -- check normal movement
+    if diffX == 0 and diffY == 1 then
+        return true
+    end
+
+    return false
 end
 
 --[[
