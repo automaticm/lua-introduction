@@ -211,7 +211,7 @@ function checkMovementRook (startSquare, endSquare)
     end
 
     -- 
-    return (diffX == 2 and diffY == 1) or (diffX == 1 and diffY == 2)
+    return (diffX == 0 and diffY >= 1) or (diffX >= 1 and diffY == 0)
 end
 function checkMovementKnight (startSquare, endSquare)
     --make sure we have a valid end location, startSquare should already be checked at this point
