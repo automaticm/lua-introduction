@@ -152,18 +152,104 @@ end
     Creator: Edgar
     These functions simple return true or false if the selected piece can move in the way the user want it to move
 --]]
-function checkMovementKing (starSquare, endSquare)
+function checkMovementKing (startSquare, endSquare)
+    --make sure we have a valid end location, startSquare should already be checked at this point
+    if not inBoard(endSquare) then 
+        return false
+    end
+
+    --stop if you try to move to a friendly
+    if not checkFriendly(startSquare, endSquare) then
+        return false
+    end
+
+    --making sure the king can actually go there 
+    local initalX, initalY = parseCoord(startSquare)
+    local endX, endY = parseCoord(endSquare)
+
+    local diffX = math.abs(initalX - endX)
+    local diffY = math.abs(initalY - endY)
+
+    if diffX == 0 or diffY == 0 then 
+        print("Start square cannot be the same as end square")
+        return false
+    end
+
+    return (diffX <= 1 and diffY <= 1)
+
+
 end
-function checkMovementQueen (starSquare, endSquare)
+function checkMovementQueen (startSquare, endSquare)
+    --the queen moves either like a rook or bishop
+    return checkMovementRook(startSquare, endSquare) or checkMovementBishop(startSquare, endSquare)
 end
-function checkMovementBishop (starSquare, endSquare)
+function checkMovementBishop (startSquare, endSquare)
+
 end
-function checkMovementRook (starSquare, endSquare)
+
+function checkMovementRook (startSquare, endSquare)
+    --make sure we have a valid end location, startSquare should already be checked at this point
+    if not inBoard(endSquare) then 
+        return false
+    end
+
+    --stop if you try to move to a friendly
+    if not checkFriendly(startSquare, endSquare) then
+        return false
+    end
+
+    --making sure the rook can actually go there 
+    local initalX, initalY = parseCoord(startSquare)
+    local endX, endY = parseCoord(endSquare)
+
+    local diffX = math.abs(initalX - endX)
+    local diffY = math.abs(initalY - endY)
+
+    if diffX == 0 or diffY == 0 then 
+        print("Start square cannot be the same as end square")
+        return false
+    end
+
+    -- 
+    return (diffX == 2 and diffY == 1) or (diffX == 1 and diffY == 2)
 end
-function checkMovementKnight (starSquare, endSquare)
+function checkMovementKnight (startSquare, endSquare)
+    --make sure we have a valid end location, startSquare should already be checked at this point
+    if not inBoard(endSquare) then 
+        return false
+    end
+
+    --stop if you try to move to a friendly
+    if not checkFriendly(startSquare, endSquare) then
+        return false
+    end
+
+    --making sure the knight can actually go there 
+    local initalX, initalY = parseCoord(startSquare)
+    local endX, endY = parseCoord(endSquare)
+
+    local diffX = math.abs(initalX - endX)
+    local diffY = math.abs(initalY - endY)
+
+    if diffX == 0 or diffY == 0 then 
+        print("Start square cannot be the same as end square")
+        return false
+    end
+
+    -- L has to be either 2,1 or 1,2
+    return (diffX == 2 and diffY == 1) or (diffX == 1 and diffY == 2)
+
+
 end
-function checkMovementPawn (starSquare, endSquare)
-    
+
+function checkMovementPawn (file, player) --(startSquare, endSquare)
+    for i = 1, 8 do
+        local square = file .. tostring(i)
+        if board[square].piece == piece.pawn and board[square].player == player then
+            return square
+        end
+    end
+    return nil
 end
 
 --[[
