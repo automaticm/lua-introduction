@@ -2,6 +2,7 @@
     Author: Ado
     Changes the '+' operator to act like a '*' operator
     using metamethods __add, and __tostring
+    
 ]]
 
 local function number(val)

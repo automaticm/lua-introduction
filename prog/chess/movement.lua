@@ -190,9 +190,15 @@ end
 
 --[[
     Creator: Edgar
-    This function will piece everything together and make the movement happen. 
+    Contributors: Ado
+    This will piece everything together and make the movement happen. 
 --]]
-function movement()
+Movement = {
+    player = nil,
+    piece = nil
+
+    
+}
     -- for i = 1, 8 do
     --     local square = file .. tostring(i)
     --     if board[square].piece == piece.pawn and board[square].player == player then
@@ -200,5 +206,3 @@ function movement()
     --     end
     -- end
     -- return nil
-
-end
