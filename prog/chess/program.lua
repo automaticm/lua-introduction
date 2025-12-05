@@ -76,8 +76,8 @@ PlacePiece("f8", piece.bishop, plr.black)
 PlacePiece("d8", piece.queen, plr.black)
 PlacePiece("e8", piece.king, plr.black)
 
--- print(board.h1.player)
--- print(_board.h1.player)
+print(board.h1.player)
+print(_board.h1.player)
 
 
 -- board.z4 = {piece = piece.pawn, player = plr.white} -- __newindex
@@ -93,57 +93,23 @@ PrintBoard()
     game logic
 ]]
 while(true) do
-    -- White's turn
-    print("White's turn:")
-    print("Enter the piece you want to move (chess notation):")
-    local whitePiece = io.read()
+    -- White
+    print("Enter the piece's current square (chess notation):")
+    local whiteStart = io.read()
     
-    print("Enter destination square (chess notation):")
-    local whiteMove = io.read()
+    print("Enter the piece's destination square (chess notation):")
+    local whiteEnd = io.read()
     
-    if whitePiece == "p" or whitePiece == "P" then
-        local file = whiteMove:sub(1, 1)  -- Get the file (a-h)
-        local pawnSquare = checkMovementPawn(file, plr.white)
-        if pawnSquare then
-            MovePiece(pawnSquare, whiteMove)
-        else
-            print("No white pawn found on file " .. file)
-        end
-    else
-        -- For now, just places the pawn.
-        -- FindPieceOnFile should place all pieces, but I made it for pawns only.
-        -- Can't get other to work, but using (white's file on line 105) which I believe is the cause (after adding piece in FindPieceOnFile)
-        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua.
-        -- Thanks - Ado
-    end
-
-    -- Show board after moving piece
+    MovePiece(whiteStart, whiteEnd)
     PrintBoard()
 
-    -- Black's turn
-    print("\nBlack's turn:")
-    print("Enter the piece you want to move (chess notation):")
-    local blackPiece = io.read()
+    -- Black
+    print("Enter the piece's current square (chess notation):")
+    local blackStart = io.read()
     
-    print("Enter destination square (chess notation):")
-    local blackMove = io.read()
+    print("Enter the piece's destination square (chess notation):")
+    local blackEnd = io.read()
     
-    if blackPiece == "p" or blackPiece == "P" then
-        local file = blackMove:sub(1, 1)
-        local pawnSquare = checkMovementPawn(file, plr.black)
-        
-        if pawnSquare then
-            MovePiece(pawnSquare, blackMove)
-        else
-            print("No black pawn found on file " .. file)
-        end
-    else
-        -- For now, just places the pawn.
-        -- FindPieceOnFile should place all pieces, but I made it for pawns only.
-        -- Can't get other to work, but using (white's file on line 105) which I believe is the cause (after adding piece in FindPieceOnFile)
-        -- Whenever someone gets the chance, can you implement the methods you made in movement.lua.
-        -- Thanks - Ado
-    end
-
+    MovePiece(blackStart, blackEnd)
     PrintBoard()
 end

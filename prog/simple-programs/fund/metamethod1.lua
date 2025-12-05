@@ -20,8 +20,8 @@ local function number(val)
     return num
 end
 
-local a = 4
-local b = 12
+local a = number(4)
+local b = number(12)
 
 print(a + b)
 print(number(a) + number(b))
