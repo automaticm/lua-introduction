@@ -1,7 +1,7 @@
 User = {
-    name = "admin",
-    password = "123",
-    email = "admin123@gmail.com"
+    -- name = "admin",
+    -- password = "123",
+    -- email = "admin123@gmail.com"
 }
 
 function User:setName(name)
