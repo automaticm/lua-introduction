@@ -5,15 +5,15 @@ User = {
 }
 
 function User:setName(name)
-    User.name = name
+    self.name = name
 end
 
 function User:setPassword(pass)
-    User.password = pass
+    self.password = pass
 end
 
 function User:setEmail(email)
-    User.email = email
+    self.email = email
 end
 
 NewUser = User
