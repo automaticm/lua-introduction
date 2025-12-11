@@ -15,9 +15,7 @@ end
 
 function account:new(o)
     o = o or {}
-    -- Set the metatable of the new object to the prototype (self, which is Account here)
     setmetatable(o, self)
-    -- Crucially, set __index of the metatable to itself so lookups delegate correctly
     self.__index = self 
     return o
 end
