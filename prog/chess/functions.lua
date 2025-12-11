@@ -6,8 +6,8 @@ local init = require("init")
     Out of bounds dealt with metamethod __index and __newindex in "program.lua"
 ]]
 function PlacePiece(square, piece, plr)
-    board[square].piece = piece
-    board[square].player = plr
+    _board[square].piece = piece
+    _board[square].player = plr
 end
 
 --[[

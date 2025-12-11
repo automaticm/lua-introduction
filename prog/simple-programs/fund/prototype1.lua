@@ -1,27 +1,55 @@
-User = {
-    name = "admin",
-    password = "123",
-    email = "admin123@gmail.com"
+-- 16.1, 16.2, ... 16.4
+local account =
+{
+    balance = 0
 }
 
-function User:setName(name)
-    self.name = name
+function account:withdraw(v)
+    if v > self.balance then error "Cannot withdraw more then account balance" end
+    self.balance = self.balance - v
 end
 
-function User:setPassword(pass)
-    self.password = pass
+function account:deposit(v)
+    self.balance = self.balance + v
 end
 
-function User:setEmail(email)
-    self.email = email
+function account:new(o)
+    o = o or {}
+    -- Set the metatable of the new object to the prototype (self, which is Account here)
+    setmetatable(o, self)
+    -- Crucially, set __index of the metatable to itself so lookups delegate correctly
+    self.__index = self 
+    return o
 end
 
-NewUser = User
--- User = nil
--- print(newUser[1] .. " " .. newUser[2] " "  .. newUser[3])
+local account1 = account:new({balance = 100.00})
+local account2 = account:new({balance = 200.00})
 
-NewUser:setName("pablo")
-NewUser:setEmail("pablostinks123@gmail.com")
-NewUser:setPassword("123456789")
-print(NewUser.name .. " " .. NewUser.password .. " "  .. NewUser.email)
--- print(User.name .. " " .. User.password .. " "  .. User.email)
+account1:deposit(50.00)
+print(account1.balance)
+print(account2.balance)
+account2:withdraw(20.00)
+print(account2.balance)
+
+--[[
+    function newAccount (initialBalance)
+      local self = {balance = initialBalance}
+    
+      local withdraw = function (v)
+                         self.balance = self.balance - v
+                       end
+    
+      local deposit = function (v)
+                        self.balance = self.balance + v
+                      end
+    
+      local getBalance = function () return self.balance end
+    
+      return {
+        withdraw = withdraw,
+        deposit = deposit,
+        getBalance = getBalance
+      }
+    end
+]]
+

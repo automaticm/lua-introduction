@@ -26,27 +26,21 @@ setmetatable(board,
     __index = function(_, key)
         if _board[key] then
             return _board[key]
-        else
-            print("Invalid square")
         end
     end,
     __newindex = function(_, key, value)
         if _board[key] then
             _board[key] = value
-        else
-            print("Error: Invalid chess square '" .. key .. "'")
         end
     end
 }
 )
 
 for i, file in ipairs(files) do
-    -- PlacePiece(file.."2", piece.pawn, plr.black)
     PlacePiece(file.."2", piece.pawn, plr.white)
 end
 
 for i, file in ipairs(files) do
-    -- PlacePiece(file.."7", piece.pawn, plr.white)
     PlacePiece(file.."7", piece.pawn, plr.black)
 end
 
@@ -95,21 +89,21 @@ PrintBoard()
 while(true) do
     -- White
     print("Enter the piece's current square (chess notation):")
-    local whiteStart = io.read()
+    local white = io.read()
+
+    local wsp = string.sub(white, 1, 2)
+    local wep = string.sub(white, 3, 4)
     
-    print("Enter the piece's destination square (chess notation):")
-    local whiteEnd = io.read()
-    
-    MovePiece(whiteStart, whiteEnd)
+    MovePiece(wsp, wep)
     PrintBoard()
 
     -- Black
     print("Enter the piece's current square (chess notation):")
-    local blackStart = io.read()
+    local black = io.read()
     
-    print("Enter the piece's destination square (chess notation):")
-    local blackEnd = io.read()
+    local bsp = string.sub(black, 1, 2)
+    local bep = string.sub(black, 3, 4)
     
-    MovePiece(blackStart, blackEnd)
+    MovePiece(bsp, bep)
     PrintBoard()
 end
