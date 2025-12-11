@@ -24,6 +24,7 @@ end
 
 local account1 = account:new({balance = 100.00})
 local account2 = account:new({balance = 200.00})
+-- local account1 = account.new(account, {balance = 100})
 
 account1:deposit(50.00)
 print(account1.balance)

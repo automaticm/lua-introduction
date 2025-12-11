@@ -26,11 +26,15 @@ setmetatable(board,
     __index = function(_, key)
         if _board[key] then
             return _board[key]
+        else
+            error("Invalid square (a1-h8)")
         end
     end,
     __newindex = function(_, key, value)
         if _board[key] then
             _board[key] = value
+        else
+            error("Cannot assign values to invalid square")
         end
     end
 }
@@ -80,7 +84,6 @@ print(_board.h1.player)
 
 -- print(" ")
 PrintBoard()
-
 
 --[[
     Author: all of us

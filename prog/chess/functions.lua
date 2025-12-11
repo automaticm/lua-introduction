@@ -22,7 +22,7 @@ function PrintBoard()
         local rank = ranks[i]
         for _, file in ipairs(files) do
             local square = file .. rank
-            local value = board[square]
+            local value = _board[square]
             if value.piece then
                 local sym = value.player
                 if value.player == "black" then
