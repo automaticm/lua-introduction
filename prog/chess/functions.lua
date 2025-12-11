@@ -65,38 +65,6 @@ function NextRank(curr)
 end
 
 --[[
-    Creator: David
-    turns number 'x' into correspoding char
---]]
-function toChar(x)
-    if x == 2 then
-        return 'b'
-    elseif x == 3 then
-        return 'c'
-    elseif x == 4 then
-        return 'd'
-    elseif x == 5 then
-        return 'e'
-    elseif x == 6 then
-        return 'f'
-    elseif x == 7 then
-        return 'g'
-    elseif x == 8 then
-        return 'h'
-    elseif x == 1 then
-        return 'a'
-
-    -- In the edge case when x is out of bounds then return the letter closest to that boundary
-    else 
-        if x > 8 then
-            return 'h'
-        else
-            return 'a'
-        end
-    end
-end
-
---[[
     Author: Ado
     returns the square where the piece is found or nil if no piece exists'
     (words with piece.pawn, generic doesnt)
